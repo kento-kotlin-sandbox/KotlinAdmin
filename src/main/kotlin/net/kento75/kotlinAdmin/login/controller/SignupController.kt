@@ -15,10 +15,15 @@ import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PostMapping
 
 import net.kento75.kotlinAdmin.login.domain.model.SignupForm
+import net.kento75.kotlinAdmin.dashboard.domain.model.User
+import net.kento75.kotlinAdmin.dashboard.domain.service.UserService
 
 
 @Controller
 class SignupController {
+
+    @Autowired
+    internal var userService: UserService? = null
 
     // ラジオボタンの実装
     internal var radioMarriage: Map<String, String>? = null
@@ -81,7 +86,49 @@ class SignupController {
 
     // ユーザー登録画面のPOST用コントローラー
     @PostMapping("/signup")
-    fun postSignUp(model: Model): String {
+    fun postSignUp(@ModelAttribute @Validated form: SignupForm, bindingResult: BindingResult, model: Model): String {
+
+        // 入力チェックに引っかかった場合、ユーザー登録画面に戻る
+        if(bindingResult.hasErrors()) {
+            return getSignUp(form, model)
+        }
+
+        // DEBUG: formの中身をコンソールに出力
+        System.out.println("ユーザーID：" + form.userId)
+        System.out.println("パスワード：" + form.password)
+        System.out.println("ユーザー名：" + form.userName)
+        System.out.println("誕生日：" + form.birthday)
+        System.out.println("年齢：" + form.age)
+        System.out.println("結婚ステータス：" + form.marriage)
+
+
+        // insert用変数
+        val user: User? = User()
+
+        // ユーザーID
+        user?.userId = form.userId
+        // パスワード
+        user?.password = form.password
+        // ユーザー名
+        user?.userName = form.userName
+        // 誕生日
+        user?.birthday = form.birthday
+        // 年齢
+        user?.age = form.age
+        // 結婚ステータス
+        user?.marriage = form.marriage!!
+        // ロール(一般)
+        user?.role = "ROLE_GENERAL"
+
+        // ユーザー登録処理
+        val result: Boolean = userService?.insert(user!!)!!
+
+        // ユーザー登録結果の判定
+        if(result) {
+            System.out.println("insert成功")
+        } else {
+            System.out.println("insert失敗")
+        }
 
         // login.htmlにリダイレクト
         return "redirect:/login"
