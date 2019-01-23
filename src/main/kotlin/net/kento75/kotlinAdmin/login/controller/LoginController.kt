@@ -10,6 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping
 class LoginController {
 
     // ログイン画面のGET用コントローラー
+    @GetMapping("/")
+    fun getRoot(model: Model): String {
+
+        // login.htmlに画面遷移
+        return "redirect:/login"
+    }
+
+    // ログイン画面のGET用コントローラー
     @GetMapping("/login")
     fun getLogin(model: Model): String {
 

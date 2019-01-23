@@ -1,4 +1,4 @@
-package net.kento75.kotlinAdmin
+package net.kento75.kotlinAdmin.common.security
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
