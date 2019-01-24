@@ -8,12 +8,14 @@ VALUES('test@xxx.co.jp', '$2a$10$xRTXvpMWly0oGiu65WZlm.3YL95LGVV2ASFjDhe6WF4.Qji
 
 
 /* 顧客マスタ */
-INSERT INTO customer (customer_id, customer_name, address, updated_at)
-VALUES(1, '有限会社A', '世田谷区...', '2012-04-01 12:34:56');
-INSERT INTO customer (customer_id, customer_name, address, updated_at)
-VALUES(2, 'B社', '千葉市...', '2012-07-01 12:34:56');
-INSERT INTO customer (customer_id, customer_name, address, updated_at)
-VALUES(3, 'C社', '名古屋市...', '2015-05-01 12:34:56');
+INSERT INTO customer (customer_id, customer_name, address, updated_at, delete_flg)
+VALUES(1, '有限会社A', '世田谷区...', '2012-04-01 12:34:56', false);
+INSERT INTO customer (customer_id, customer_name, address, updated_at, delete_flg)
+VALUES(2, 'B社', '千葉市...', '2012-07-01 12:34:56', false);
+INSERT INTO customer (customer_id, customer_name, address, updated_at, delete_flg)
+VALUES(3, 'C社', '名古屋市...', '2015-05-01 12:34:56', false);
+INSERT INTO customer (customer_id, customer_name, address, updated_at, delete_flg)
+VALUES(3, 'C社', '名古屋市...', '2015-05-01 12:34:56', true);
 
 
 /* 売上テーブル */

@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS customer (
 , customer_name varchar(256)    --会社名
 , address       varchar(256)    --住所
 , updated_at    timestamp       --更新日時
+, delete_flg    boolean         --論理削除フラグ
 );
 
 
