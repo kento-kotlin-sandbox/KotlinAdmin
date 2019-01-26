@@ -15,7 +15,7 @@ VALUES(2, 'B社', '千葉市...', '2012-07-01 12:34:56', false);
 INSERT INTO customer (customer_id, customer_name, address, updated_at, delete_flg)
 VALUES(3, 'C社', '名古屋市...', '2015-05-01 12:34:56', false);
 INSERT INTO customer (customer_id, customer_name, address, updated_at, delete_flg)
-VALUES(3, 'C社', '名古屋市...', '2015-05-01 12:34:56', true);
+VALUES(4, 'D社', '名古屋市...', '2015-05-01 12:34:56', true);
 
 
 /* 売上テーブル */

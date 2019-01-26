@@ -28,7 +28,10 @@
       <!-- 更新日付 -->
       <td th:text="${#dates.format(customer.updatedAt, 'YYYY/MM/dd')}"></td>
       <!-- 取引状態 -->
-      <td th:text="${customer.deleteFlg} ? '停止' : '' "></td>
+      <td th:text="${customer.deleteFlg} ? '停止' : '継続' "></td>
+      <td>
+        <a class="btn btn-primary" th:href="@{'/customerDetail/' + ${customer.customerId}}">詳細</a>
+      </td>
     </tr>
   </table>
   <!-- ユーザー一覧の件数 -->
